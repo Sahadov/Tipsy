@@ -34,14 +34,24 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         splitNumberLabel.text = String(format: "%.f", sender.value)
-        calculatorBrain.peopleNumber = Float(sender.value)
+        calculatorBrain.peopleNumber = Int(sender.value)
         
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         calculatorBrain.totalSum = Float(billTextField.text ?? "0") ?? 0.0
-        print(calculatorBrain.eachTip)
+        self.performSegue(withIdentifier: "goToResults", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "goToResults" {
+                let destinationVC = segue.destination as! ResultsViewController
+                destinationVC.totalSum = calculatorBrain.totalSum
+                destinationVC.tipString = calculatorBrain.tipString
+                destinationVC.peopleNumber = calculatorBrain.peopleNumber
+                destinationVC.eachTip = calculatorBrain.getEachTipString()
+            }
+        }
     
 
 

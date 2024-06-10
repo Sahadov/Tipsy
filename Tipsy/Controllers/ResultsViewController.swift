@@ -10,16 +10,25 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
+    var totalSum: Float?
+    var tipString: String?
+    var peopleNumber: Int?
+    var eachTip: String?
+    
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsLabel: UILabel!
     
     
     @IBAction func recalculatePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        totalLabel.text = eachTip
+        settingsLabel.text = "Split beetwen \(peopleNumber!) people, with \(tipString!) tip."
 
         // Do any additional setup after loading the view.
     }

@@ -9,9 +9,9 @@
 import Foundation
 
 struct CalculatorBrain {
-    var tipString: String = "0%"
-    var peopleNumber: Float = 0
+    var peopleNumber: Int = 2
     var totalSum: Float = 0.0
+    var tipString: String = "0%"
     
     var tip: Float {
         if tipString == "10%" {
@@ -24,8 +24,12 @@ struct CalculatorBrain {
         
     }
     
-    var eachTip: Float {
-        return (totalSum + (totalSum * tip)) / peopleNumber
+    func getEachTip() -> Float {
+        return (totalSum + (totalSum * tip)) / Float(peopleNumber)
+    }
+    
+    func getEachTipString() -> String {
+        return String(format: "%.2f", getEachTip())
     }
     
    
