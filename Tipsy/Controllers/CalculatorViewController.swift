@@ -19,6 +19,19 @@ class CalculatorViewController: UIViewController {
     
     
     @IBAction func tipChanged(_ sender: UIButton) {
+        zeroPctButton.isSelected = false
+        tenPctButton.isSelected = false
+        twentyPctButton.isSelected = false
+        sender.isSelected = true
+        
+        var currentTip = 0.0
+        if sender.currentTitle == "10%" {
+            currentTip = 0.1
+        } else if sender.currentTitle == "20%" {
+            currentTip = 0.2
+        }
+        
+        print(currentTip)
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
